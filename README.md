@@ -62,8 +62,7 @@ using ```expo-document-picker``` library to pick files , and ``` expo-file-syste
 and then passing the parameter to ```<Reader />``` component. 
 
 
-```  
-
+```js
 ...
 const [fileAsBas64, setFileAsBas64] = useState(null);
 const getFile = async () => {
@@ -83,7 +82,7 @@ const getFile = async () => {
 ...
 ```
 passing the parameter to ```<Reader />``` component
-```
+```js
 <ReaderProvider>
           <Reader
             renderLoadingComponent={_renderLoadingCom}
@@ -93,7 +92,7 @@ passing the parameter to ```<Reader />``` component
             defaultTheme={darkTheme}
             onReady={_readyFn}
           />
-        </ReaderProvider>
+</ReaderProvider>
 ```
 
 ## Reader Params
