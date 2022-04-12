@@ -57,6 +57,44 @@ export default function App() {
   );
 }
 ```
+## Reading a .epub file with Expo 
+using ```expo-document-picker``` library to pick files , and ``` expo-file-system ``` to read file as a string ```base64``` 
+and then passing the parameter to ```<Reader />``` component. 
+
+
+```  
+
+...
+const [fileAsBas64, setFileAsBas64] = useState(null);
+const getFile = async () => {
+    DocumentPicker.getDocumentAsync().then((res) => {
+      FileSystem.readAsStringAsync(`${res.uri}`, {
+        encoding: FileSystem.EncodingType.Base64,
+      })
+        .then((response) => {
+          //console.log("Response is: ",response)
+          setFileAsBas64(response);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    });
+  };
+...
+```
+passing the parameter to ```<Reader />``` component
+```
+<ReaderProvider>
+          <Reader
+            renderLoadingComponent={_renderLoadingCom}
+            src={{ base64:fileAsBas64 }}
+            width={width}
+            height={height}
+            defaultTheme={darkTheme}
+            onReady={_readyFn}
+          />
+        </ReaderProvider>
+```
 
 ## Reader Params
 
